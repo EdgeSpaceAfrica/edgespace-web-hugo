@@ -14,6 +14,10 @@
     <!-- style (always cache it) -->
     {{ partialCached "essentials/style.html" . }}
 
+    <!-- My custom styles -->
+    {{ $styles := resources.Get "css/custom.css" | resources.Minify | resources.Fingerprint }}
+    <link rel="stylesheet" href="{{ $styles.Permalink }}" integrity="{{ $styles.Data.Integrity }}">
+
   </head>
 
   <body>
@@ -49,5 +53,15 @@
 
     <!-- script (always cache it) -->
     {{ partialCached "essentials/script.html" . }}
+
+
+    <!-- Include jQuery from a CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+
+    <!-- Include custom JavaScript file from assets -->
+    {{ $customJS := resources.Get "js/custom.js" | resources.Minify | resources.Fingerprint }}
+    <script src="{{ $customJS.Permalink }}" integrity="{{ $customJS.Data.Integrity }}"></script>
+   
   </body>
 </html>

@@ -38,9 +38,9 @@ preloader = "" # use jpg, png, svg or gif format.
 # Navigation button
 [navigation_button]
 enable = true
-label = "Build with us"
+label = "Join us"
 #link = "contact"
-link = "https://forms.gle/hJm1Z7UD75VkwsnC7"
+link = "https://forms.gle/WFQ2c1o1u7bbS2hr6"
 
 
 # search

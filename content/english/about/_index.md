@@ -8,8 +8,8 @@ draft: false
 
 ### Mission
 
-Our mission is to build a dynamic network and community of skilled engineers and domain experts poised to lead the charge in the most cutting-edge technologies across the continent. We aspire to be trailblazers in cultivating a tech ecosystem that not only propels the progress of deep technologies but also relentlessly pushes the boundaries of what is considered possible
+Our mission is to build a strong network of talented engineers and experts to lead in cutting-edge technologies across the continent. We aim to pioneer a tech ecosystem that not only drives the progress of advanced technologies but also continually pushes the boundaries of what is possible
 
 ### Vision
-Our vision is to see a connected community of diverse engineers and domain experts, collaborating seamlessly to lead the way in cutting-edge technologies. As we pioneer this tech ecosystem, we envision a landscape where deep technologies flourish, and the boundaries of what's achievable are continually expanded. With innovation at its core, our vision is to inspire a future where technology not only advances but also empowers everyone to be a part of its transformative journey.
+Our vision is to create a diverse and connected community of engineers and experts, collaborating to lead in cutting-edge technologies. We envision a thriving tech ecosystem where advanced technologies flourish, constantly expanding the boundaries of what’s possible. With innovation at its core, we aim to inspire a future where technology advances and empowers everyone to be a part of its transformative journey.
 

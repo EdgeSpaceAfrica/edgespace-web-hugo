@@ -13,47 +13,48 @@ weight = 2
 
 [[main]]
 name = "Blog"
-pageRef = "/blog"
+# pageRef = "/blog"
+url = "https://medium.com/edgespace"
 weight = 3
 
-[[main]]
-name = "Pages"
-weight = 4
+# [[main]]
+# name = "Pages"
+# weight = 4
 
 
-[[main]]
-parent = "Pages"
-name = "Contact"
-pageRef = "/contact"
+# [[main]]
+# parent = "Pages"
+# name = "Contact"
+# pageRef = "/contact"
 
-[[main]]
-parent = "Pages"
-name = "Categories"
-pageRef = "/categories"
+# [[main]]
+# parent = "Pages"
+# name = "Categories"
+# pageRef = "/categories"
 
-#[[main]]
-#parent = "Pages"
-#name = "Authors"
-#pageRef = "/authors"
+# [[main]]
+# parent = "Pages"
+# name = "Authors"
+# pageRef = "/authors"
 
-#[[main]]
-#parent = "Pages"
-#name = "404 Page"
-#pageRef = "/404"
+# [[main]]
+# parent = "Pages"
+# name = "404 Page"
+# pageRef = "/404"
 
 
-# footer menu
-[[footer]]
-name = "About"
-pageRef = "/about"
-weight = 1
+## footer menu
+# [[footer]]
+# name = "About"
+# pageRef = "/about"
+# weight = 1
 
-#[[footer]]
-#name = "Elements"
-#pageRef = "/elements"
-#weight = 2
+# [[footer]]
+# name = "Elements"
+# pageRef = "/elements"
+# weight = 2
 
-#[[footer]]
-#name = "Privacy Policy"
-#pageRef = "/privacy-policy"
-#weight = 3
+# [[footer]]
+# name = "Privacy Policy"
+# pageRef = "/privacy-policy"
+# weight = 3

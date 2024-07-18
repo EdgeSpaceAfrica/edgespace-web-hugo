@@ -1,0 +1,19 @@
+.mediumfeedcontainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px; /* Adjust the gap between items */
+    padding: 16px; /* Optional: padding around the container */
+}
+
+.mediumfeedcontainer div {
+    padding: 16px; /* Example padding */
+    border-radius: 4px; /* Optional: rounded corners */
+    /* text-align: center;  */
+    flex: 1 1 calc(50% - 32px); /* Adjust the width of items for desktop */
+}
+
+@media (max-width: 768px) {
+    .mediumfeedcontainer div {
+        flex: 1 1 100%; /* Full width for mobile */
+    }
+}

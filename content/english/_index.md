@@ -6,8 +6,8 @@ banner:
   image: "/images/banner.png"
   button:
     enable: true
-    label: "Build a product with us"
-    link: "https://forms.gle/hJm1Z7UD75VkwsnC7"
+    label: "Join our talent cloud"
+    link: "https://forms.gle/WFQ2c1o1u7bbS2hr6"
 
 
 # Features
@@ -20,13 +20,13 @@ features:
       - "Build a managed team within the talent cloud."
       - "Find co-founders, technology leaders and partners to drive innovation in their organizations."
       - "Hire domain experts to train their large AI models."
-    button:
-      enable: true
-      label: "Find talents"
-      link: "#"
+    # button:
+    #   enable: true
+    #   label: "Find talents"
+    #   link: "#"
     button2:
       enable: true
-      label: "Join the Talent Cloud"
+      label: "Join our Talent Cloud"
       link: "https://forms.gle/WFQ2c1o1u7bbS2hr6"
 
   - title: "The technologies and fields we are focused on"
