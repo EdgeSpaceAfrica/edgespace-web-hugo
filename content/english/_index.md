@@ -3,12 +3,27 @@
 banner: 
   title: "Empowering Innovation,\n Shaping Futures"
   content: "Our commiment goes beyond technology; we nurture talent and empower individuals to make a difference."
-  image: "/images/banner.png"
+  image: "/images/banner2.png"
   button:
     enable: true
     label: "Join our talent cloud"
     link: "https://forms.gle/WFQ2c1o1u7bbS2hr6"
+  button2:
+    enable: true
+    label: "Join the Early Access to Progress Tracker"
+    link: "#"
 
+# Progress Tracker
+progress_tracker:
+  enable: true
+  label: "Introducing"
+  title: "Progress Tracker"
+  content: "Your all-in-one platform for learning new skills, tracking goals, and growing with a supportive community. Learn Faster And Grow Smarter With AI-Powered Personalized Learning."
+  image: "/images/products/progress-tracker.png"
+  button:
+    enable: true
+    label: "Join the Early Access"
+    link: "#"
 
 # Features
 features:

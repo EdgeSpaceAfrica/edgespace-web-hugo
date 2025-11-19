@@ -17,3 +17,31 @@
         flex: 1 1 100%; /* Full width for mobile */
     }
 }
+
+/* FAQ toggle icons */
+.faq-item[open] .faq-collapsed {
+    display: none;
+}
+
+.faq-item[open] .faq-expanded {
+    display: block;
+}
+
+.faq-item:not([open]) .faq-collapsed {
+    display: block;
+}
+
+.faq-item:not([open]) .faq-expanded {
+    display: none;
+}
+
+/* FAQ item heights */
+.faq-item {
+    min-height: 84px;
+    padding-bottom: 32px;
+}
+
+.faq-item[open] {
+    min-height: 92px;
+    padding-bottom: 32px;
+}
