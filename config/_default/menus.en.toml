@@ -12,10 +12,20 @@ pageRef = "/about"
 weight = 2
 
 [[main]]
+name = "Products"
+weight = 3
+
+[[main]]
+parent = "Products"
+name = "Progress Tracker"
+pageRef = "/products/progress-tracker"
+weight = 1
+
+[[main]]
 name = "Blog"
 # pageRef = "/blog"
 url = "https://medium.com/edgespace"
-weight = 3
+weight = 4
 
 # [[main]]
 # name = "Pages"

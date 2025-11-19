@@ -11,19 +11,43 @@
             <p class="mb-8">
               {{ .content | markdownify }}
             </p>
-            {{ with .button }}
-              {{ if .enable }}
-                <a
-                  class="btn btn-primary"
-                  href="{{ .link | absURL }}"
-                  {{ if strings.HasPrefix .link `http` }}
-                    target="_blank" rel="noopener"
-                  {{ end }}>
-                  {{ .label }}
-                  <i class="fa fa-arrow-right pl-2"></i>
-                </a>
+            <div class="flex flex-wrap justify-center gap-4">
+              {{ with .button }}
+                {{ if .enable }}
+                  <a
+                    class="btn bg-white hover:bg-gray-100"
+                    style="color: #667085;"
+                    href="{{ .link | absURL }}"
+                    {{ if strings.HasPrefix .link `http` }}
+                      target="_blank" rel="noopener"
+                    {{ end }}>
+                    {{ .label }}
+                  </a>
+                {{ end }}
               {{ end }}
-            {{ end }}
+              {{ with .button2 }}
+                {{ if .enable }}
+                  <a
+                    class="btn btn-primary inline-flex items-center"
+                    href="{{ .link | absURL }}"
+                    {{ if strings.HasPrefix .link `http` }}
+                      target="_blank" rel="noopener"
+                    {{ end }}>
+                    {{ .label }}
+                    <svg class="ml-2" width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <g clip-path="url(#clip0_13506_33268)">
+                        <path d="M9.82897 5.99666L16.1056 8.03607M16.1056 8.03607L14.0662 14.3127M16.1056 8.03607L5.41354 13.484" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </g>
+                      <defs>
+                        <clipPath id="clip0_13506_33268">
+                          <rect width="16" height="16" fill="white" transform="translate(0 7.26392) rotate(-27)"/>
+                        </clipPath>
+                      </defs>
+                    </svg>
+                  </a>
+                {{ end }}
+              {{ end }}
+            </div>
           </div>
           <div class="col-12">
             {{ partial "image" (dict "Src" .image "Alt" "Banner image" "Loading" "eager" "Class" "mx-auto lg:!max-w-[800px]" "DisplayXL" "800x" ) }}
@@ -33,6 +57,57 @@
     </section>
   {{ end }}
   <!-- /Banner -->
+
+  <!-- Progress Tracker -->
+  {{ with .Params.progress_tracker }}
+    {{ if .enable }}
+      <section class="section" style="background-color: white;">
+        <div class="container">
+          <div class="row items-center justify-between">
+            <div class="md:col-5 lg:col-6 mb-8 md:mb-0">
+              <div class="inline-block mb-4 px-3 py-1" style="background-color: #F2E1FF; border-radius: 100px; font-size: 14px; color: #222222;">
+                {{ .label }}
+              </div>
+              <h2 class="mb-4 text-4xl font-bold">
+                {{ .title | markdownify }}
+              </h2>
+              <p class="mb-6 text-lg" style="color: #667085;">
+                {{ .content | markdownify }}
+              </p>
+              {{ with .button }}
+                {{ if .enable }}
+                  <a
+                    class="btn btn-primary inline-flex items-center"
+                    href="{{ .link | absURL }}"
+                    {{ if strings.HasPrefix .link `http` }}
+                      target="_blank" rel="noopener"
+                    {{ end }}>
+                    {{ .label }}
+                    <svg class="ml-2" width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <g clip-path="url(#clip0_13506_33268)">
+                        <path d="M9.82897 5.99666L16.1056 8.03607M16.1056 8.03607L14.0662 14.3127M16.1056 8.03607L5.41354 13.484" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </g>
+                      <defs>
+                        <clipPath id="clip0_13506_33268">
+                          <rect width="16" height="16" fill="white" transform="translate(0 7.26392) rotate(-27)"/>
+                        </clipPath>
+                      </defs>
+                    </svg>
+                  </a>
+                {{ end }}
+              {{ end }}
+            </div>
+            <div class="md:col-6 lg:col-5">
+              <div style="background-color: #F1F1F1; padding: 50px; border-radius: 8px;">
+                {{ partial "image" (dict "Src" .image "Alt" "Progress Tracker" "DisplayXL" "600x" "DisplayLG" "500x" "DisplayMD" "400x") }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    {{ end }}
+  {{ end }}
+  <!-- /Progress Tracker -->
 
   <!-- Features -->
   {{ range $i, $e:= .Params.features }}
