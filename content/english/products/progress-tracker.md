@@ -67,7 +67,7 @@ faqs:
   - q: "What can I learn here?"
     a: "From technical skills to personal development, we offer a wide range of topics."
   - q: "Is this for individuals or teams?"
-    a: "Both. Progress Tracker adapts to solo learners and teams."
+    a: ""
 
 # Bottom CTA
 bottomCta:
