@@ -14,7 +14,7 @@ heroButtons:
     url: "#demo"
     variant: "outline"
   - label: "Join the Early Access"
-    url: "#get-started"
+    url: "https://pt.edgespace.africa/signup"
     variant: "primary"
 
 # Features section
@@ -75,7 +75,7 @@ bottomCta:
   description: "Join a community built for growth — backed by AI, data, and accountability."
   button:
     label: "Join the Early Access"
-    url: "#get-started"
+    url: "https://pt.edgespace.africa/signup"
   image: "/images/products/cta-community-cluster.png"
 ---
 
