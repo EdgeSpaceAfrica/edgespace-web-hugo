@@ -11,7 +11,7 @@ banner:
   button2:
     enable: true
     label: "Join the Early Access to Progress Tracker"
-    link: "#"
+    link: "/products/progress-tracker"
 
 # Progress Tracker
 progress_tracker:
@@ -23,7 +23,7 @@ progress_tracker:
   button:
     enable: true
     label: "Join the Early Access"
-    link: "#"
+    link: "/products/progress-tracker"
 
 # Features
 features:
