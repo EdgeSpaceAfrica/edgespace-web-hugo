@@ -25,6 +25,38 @@ progress_tracker:
     label: "Join the Early Access"
     link: "/products/progress-tracker"
 
+# PT Desktop
+pt_desktop:
+  enable: true
+  title: "PT Desktop - Clarity. Speed. Intelligence."
+  content: "Smart, AI-powered productivity companion designed to help you work better, learn faster, and stay in control of your goals. Whether you're building a skill, completing a project, or managing daily work, PT Desktop brings together intelligent tracking and instant AI assistance — all inside one seamless desktop experience."
+  bulletpoints:
+    - "Real-time activity & time tracking"
+    - "Helps you get more done without context switching"
+    - "Designed for deep work, fast output, and measurable progress"
+  button:
+    enable: true
+    label: "Download App Now"
+    link: "#"
+  tabs:
+    - name: "Progress Tracker"
+      active: false
+    - name: "Edge Intelligence"
+      active: true
+  edge_intelligence:
+    title: "Edge Intelligence"
+    content: "Edge Intelligence brings together instant AI assistance — all inside one smooth, easy-to-use desktop experience."
+    features:
+      - title: "AI Learning Assist"
+        content: "A floating AI companion that defines, explains, and guides you instantly while you work."
+        image: "/images/ai1.png"
+      - title: "Task Completion"
+        content: "Automate tasks, run commands, and modify files without switching apps."
+        image: "/images/ai2.png"
+      - title: "In-app AI Learning Assist"
+        content: "A floating AI companion that defines, explains, and guides you instantly while you work."
+        image: "/images/ai3.png"
+
 # Features
 features:
   - title: "What's ETC [Edgespace Talent Cloud]"
