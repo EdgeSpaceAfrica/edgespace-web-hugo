@@ -1,0 +1,345 @@
+{{ define "main" }}
+  <!-- Hero Section -->
+  <section class="relative min-h-[600px] flex items-center">
+    <!-- Background Image -->
+    <div class="absolute inset-0 z-0">
+      <img
+        src="{{ .Params.image | default "/images/pt-desktop-hero.png" }}"
+        alt="PT Desktop Hero"
+        class="w-full h-full object-cover"
+      />
+      <div class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent"></div>
+    </div>
+
+    <div class="container relative z-10 py-20">
+      <div class="row">
+        <div class="lg:col-6">
+          <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
+            {{ .Params.hero.title | default .Title }}
+          </h1>
+          <p class="text-lg text-gray-200 mb-8 max-w-xl">
+            {{ .Params.hero.description | default .Description }}
+          </p>
+          <div class="flex flex-wrap gap-4">
+            {{ range .Params.hero.buttons }}
+              {{ if eq .variant "primary" }}
+                <a
+                  href="#"
+                  id="hero-download-btn"
+                  class="btn btn-primary inline-flex items-center gap-2">
+                  {{ .label }}
+                  <svg
+                    width="22"
+                    height="22"
+                    viewBox="0 0 22 22"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <g clip-path="url(#clip0_hero)">
+                      <path
+                        d="M9.82897 5.9966L16.1056 8.036M16.1056 8.036L14.0662 14.3127M16.1056 8.036L5.41354 13.4839"
+                        stroke="white"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    </g>
+                    <defs>
+                      <clipPath id="clip0_hero">
+                        <rect
+                          width="16"
+                          height="16"
+                          fill="white"
+                          transform="translate(0 7.26385) rotate(-27)" />
+                      </clipPath>
+                    </defs>
+                  </svg>
+                </a>
+              {{ else }}
+                <a
+                  href="{{ .url }}"
+                  class="btn bg-transparent border-2 border-white text-white hover:bg-white hover:text-dark inline-flex items-center gap-2">
+                  {{ .label }}
+                </a>
+              {{ end }}
+            {{ end }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- /Hero Section -->
+
+  <!-- How It Works Section -->
+  <section class="section bg-white dark:bg-darkmode-body">
+    <div class="container">
+      <h2 class="text-3xl md:text-4xl font-bold text-center text-dark dark:text-white mb-12">
+        {{ .Params.howItWorks.title | default "How It Works" }}
+      </h2>
+      <div class="row items-center">
+        <div class="lg:col-5 mb-10 lg:mb-0">
+          {{ range $index, $step := .Params.howItWorks.steps }}
+            <div class="mb-6 {{ if not $step.active }}opacity-50{{ end }}">
+              <div class="flex items-start gap-4">
+                <span class="text-3xl font-bold {{ if $step.active }}text-dark dark:text-white{{ else }}text-gray-400 dark:text-gray-400{{ end }}">
+                  {{ $step.number }}
+                </span>
+                <div>
+                  <h3 class="text-xl font-semibold text-dark dark:text-white mb-2">
+                    {{ $step.title }}
+                  </h3>
+                  <p class="text-gray-600 dark:text-gray-300">
+                    {{ $step.text }}
+                  </p>
+                </div>
+              </div>
+              {{ if lt (add $index 1) (len $.Params.howItWorks.steps) }}
+                <div class="ml-4 mt-3">
+                  <svg width="4" height="40" viewBox="0 0 4 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="4" height="40" rx="2" fill="#D9D9D9"/>
+                  </svg>
+                </div>
+              {{ end }}
+            </div>
+          {{ end }}
+          {{ with .Params.howItWorks.button }}
+            <a
+              href="{{ .url }}"
+              class="btn btn-primary inline-flex items-center gap-2 mt-4">
+              {{ .label }}
+              <svg
+                width="22"
+                height="22"
+                viewBox="0 0 22 22"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip0_hiw)">
+                  <path
+                    d="M9.82897 5.9966L16.1056 8.036M16.1056 8.036L14.0662 14.3127M16.1056 8.036L5.41354 13.4839"
+                    stroke="white"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </g>
+                <defs>
+                  <clipPath id="clip0_hiw">
+                    <rect
+                      width="16"
+                      height="16"
+                      fill="white"
+                      transform="translate(0 7.26385) rotate(-27)" />
+                  </clipPath>
+                </defs>
+              </svg>
+            </a>
+          {{ end }}
+        </div>
+        <div class="lg:col-7">
+          <div class="bg-[#1a1a1a] rounded-xl overflow-hidden p-4">
+            <img
+              src="{{ .Params.howItWorks.image | default "/images/products/pt-desktop-how-it-works.png" }}"
+              alt="How It Works"
+              class="w-full h-auto rounded-lg"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- /How It Works Section -->
+
+  <!-- PT Desktop Section -->
+  <section class="section bg-[#0a0a0a] dark:bg-white">
+    <div class="container">
+      <div class="row items-center justify-between">
+        <div class="lg:col-7 mb-12 lg:mb-0">
+          <h2 class="mb-6 text-3xl md:text-4xl lg:text-5xl font-bold text-white dark:text-dark">
+            {{ .Params.ptDesktop.title }}
+          </h2>
+          <p class="mb-8 text-gray-300 dark:text-gray-600">
+            {{ .Params.ptDesktop.description }}
+          </p>
+          <ul class="mb-8">
+            {{ range .Params.ptDesktop.bulletpoints }}
+              <li class="flex items-start gap-4 mb-5 text-white dark:text-dark text-lg">
+                <svg
+                  class="flex-shrink-0 mt-1"
+                  width="28"
+                  height="28"
+                  viewBox="0 0 28 28"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <g clip-path="url(#clip0_14573_13256)">
+                    <path
+                      d="M8.75065 14.0002L12.2507 17.5002L19.2507 10.5002M25.6673 14.0002C25.6673 20.4435 20.444 25.6668 14.0007 25.6668C7.55733 25.6668 2.33398 20.4435 2.33398 14.0002C2.33398 7.55684 7.55733 2.3335 14.0007 2.3335C20.444 2.3335 25.6673 7.55684 25.6673 14.0002Z"
+                      stroke="#E5E5E5"
+                      stroke-width="2.33333"
+                      stroke-linecap="round"
+                      stroke-linejoin="round" />
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_14573_13256">
+                      <rect width="28" height="28" rx="14" fill="white" />
+                    </clipPath>
+                  </defs>
+                </svg>
+                <span>{{ . }}</span>
+              </li>
+            {{ end }}
+          </ul>
+          {{ with .Params.ptDesktop.button }}
+            <a
+              id="pt-desktop-download-btn"
+              class="inline-flex items-center px-5 py-2.5 text-sm font-medium bg-white text-[#667085] dark:bg-dark dark:text-white border border-white/30 dark:border-dark/30 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+              href="#">
+              {{ .label }}
+              <svg
+                class="ml-2"
+                width="22"
+                height="22"
+                viewBox="0 0 22 22"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip0_14573_13285)">
+                  <path
+                    d="M9.82897 5.9966L16.1056 8.036M16.1056 8.036L14.0662 14.3127M16.1056 8.036L5.41354 13.4839"
+                    stroke="#667085"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </g>
+                <defs>
+                  <clipPath id="clip0_14573_13285">
+                    <rect
+                      width="16"
+                      height="16"
+                      fill="white"
+                      transform="translate(0 7.26385) rotate(-27)" />
+                  </clipPath>
+                </defs>
+              </svg>
+            </a>
+          {{ end }}
+        </div>
+      </div>
+
+      <!-- Tabs -->
+      <div class="flex justify-center mt-10">
+        <div class="flex">
+          {{ range .Params.ptDesktop.tabs }}
+            <button
+              class="w-[305px] py-3 text-base font-medium {{ if .active }}
+                bg-white dark:bg-dark text-dark dark:text-white
+                rounded-md
+              {{ else }}
+                text-gray-400 dark:text-gray-500
+              {{ end }}">
+              {{ .name }}
+            </button>
+          {{ end }}
+        </div>
+      </div>
+
+      <!-- Edge Intelligence Section -->
+      <div class="mt-16">
+        <h3 class="text-2xl md:text-3xl lg:text-4xl font-bold text-white dark:text-dark mb-4">
+          {{ .Params.edgeIntelligence.title }}
+        </h3>
+        <p class="text-gray-400 dark:text-gray-600 mb-10 max-w-xl">
+          {{ .Params.edgeIntelligence.description }}
+        </p>
+        <div class="grid md:grid-cols-3 gap-6">
+          {{ range .Params.edgeIntelligence.features }}
+            <div class="bg-[#1a1a1a] dark:bg-gray-100 rounded-xl p-5 overflow-hidden">
+              <h4 class="text-white dark:text-dark font-semibold mb-2">
+                {{ .title }}
+              </h4>
+              <p class="text-gray-400 dark:text-gray-600 text-sm mb-4">
+                {{ .content }}
+              </p>
+              <div class="bg-[#2a2a2a] dark:bg-gray-200 rounded-lg overflow-hidden">
+                <img src="{{ .image }}" alt="{{ .title }}" class="w-full h-auto" loading="lazy" />
+              </div>
+            </div>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- /PT Desktop Section -->
+
+  <!-- FAQ Section -->
+  <section class="section bg-white dark:bg-darkmode-body">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="lg:col-8">
+          <h2 class="text-3xl md:text-4xl font-bold text-center text-dark dark:text-white mb-12">
+            Frequently Asked Questions
+          </h2>
+          {{ range .Params.faqs }}
+            <div class="py-5 border-b border-gray-200 dark:border-gray-700">
+              <div class="flex items-center justify-between">
+                <h4 class="text-lg font-medium text-dark dark:text-white">
+                  {{ .q }}
+                </h4>
+                <button class="faq-toggle text-gray-400 hover:text-gray-600 dark:hover:text-gray-300">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 8V16M8 12H16M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </button>
+              </div>
+              <p class="mt-3 text-gray-600 dark:text-gray-300 hidden faq-answer">
+                {{ .a }}
+              </p>
+            </div>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- /FAQ Section -->
+
+  <script>
+    (function() {
+      // Detect platform
+      function detectPlatform() {
+        const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+        // Check for iOS (iPhone, iPad, iPod)
+        if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+          return 'ios';
+        }
+
+        // Check for macOS
+        if (navigator.platform.toUpperCase().indexOf('MAC') >= 0) {
+          return 'ios';
+        }
+
+        // Default to Windows for all other platforms (Windows, Linux, etc.)
+        return 'windows';
+      }
+
+      // Get download URL with detected platform
+      function getDownloadUrl() {
+        const platform = detectPlatform();
+        return `https://pt.edgespace.africa/api/general/download?platform=${platform}`;
+      }
+
+      // Set up download buttons when DOM is ready
+      document.addEventListener('DOMContentLoaded', function() {
+        const downloadUrl = getDownloadUrl();
+
+        // Hero download button
+        const heroDownloadBtn = document.getElementById('hero-download-btn');
+        if (heroDownloadBtn) {
+          heroDownloadBtn.href = downloadUrl;
+        }
+
+        // PT Desktop section download button
+        const ptDesktopDownloadBtn = document.getElementById('pt-desktop-download-btn');
+        if (ptDesktopDownloadBtn) {
+          ptDesktopDownloadBtn.href = downloadUrl;
+        }
+      });
+    })();
+  </script>
+{{ end }}

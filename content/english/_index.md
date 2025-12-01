@@ -37,7 +37,7 @@ pt_desktop:
   button:
     enable: true
     label: "Download App Now"
-    link: "#"
+    link: "/products/pt-desktop"
   tabs:
     - name: "Progress Tracker"
       active: false
