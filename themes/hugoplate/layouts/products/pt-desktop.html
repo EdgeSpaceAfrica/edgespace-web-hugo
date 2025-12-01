@@ -1,23 +1,14 @@
 {{ define "main" }}
   <!-- Hero Section -->
-  <section class="relative min-h-[600px] flex items-center">
-    <!-- Background Image -->
-    <div class="absolute inset-0 z-0">
-      <img
-        src="{{ .Params.image | default "/images/pt-desktop-hero.png" }}"
-        alt="PT Desktop Hero"
-        class="w-full h-full object-cover"
-      />
-      <div class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent"></div>
-    </div>
-
-    <div class="container relative z-10 py-20">
-      <div class="row">
-        <div class="lg:col-6">
-          <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
+  <section class="section bg-white dark:bg-darkmode-body">
+    <div class="container">
+      <div class="row items-center">
+        <div class="lg:col-6 mb-10 lg:mb-0">
+          <h1
+            class="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-dark dark:text-white mb-4 leading-[1.1]">
             {{ .Params.hero.title | default .Title }}
           </h1>
-          <p class="text-lg text-gray-200 mb-8 max-w-xl">
+          <p class="text-base md:text-lg text-gray-600 dark:text-gray-300 mb-8 max-w-xl">
             {{ .Params.hero.description | default .Description }}
           </p>
           <div class="flex flex-wrap gap-4">
@@ -26,7 +17,7 @@
                 <a
                   href="#"
                   id="hero-download-btn"
-                  class="btn btn-primary inline-flex items-center gap-2">
+                  class="inline-flex items-center px-5 py-2.5 text-sm font-medium bg-dark text-white hover:bg-black rounded-lg shadow-sm gap-2">
                   {{ .label }}
                   <svg
                     width="22"
@@ -56,11 +47,19 @@
               {{ else }}
                 <a
                   href="{{ .url }}"
-                  class="btn bg-transparent border-2 border-white text-white hover:bg-white hover:text-dark inline-flex items-center gap-2">
+                  class="inline-flex items-center px-5 py-2.5 text-sm font-medium bg-transparent border border-gray-300 dark:border-gray-600 text-dark dark:text-white hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg gap-2">
                   {{ .label }}
                 </a>
               {{ end }}
             {{ end }}
+          </div>
+        </div>
+        <div class="lg:col-6">
+          <div class="rounded-2xl overflow-hidden shadow-[0_24px_80px_rgba(15,23,42,0.18)]">
+            <img
+              src="{{ .Params.image | default "/images/pt-desktop-hero.png" }}"
+              alt="PT Desktop Hero"
+              class="w-full h-auto object-cover" />
           </div>
         </div>
       </div>
@@ -68,10 +67,172 @@
   </section>
   <!-- /Hero Section -->
 
+  <!-- Built for All Section -->
+  {{ with .Params.builtForAll }}
+    <section class="section bg-white dark:bg-darkmode-body">
+      <div class="container">
+        <div class="text-center mb-12">
+          <h2
+            class="text-3xl md:text-4xl font-bold text-dark dark:text-white mb-4">
+            {{ .title | default "Built for All." }}
+          </h2>
+          <p class="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+            {{ .description | default "Whether you're exploring, building, coding, designing, or growing your business, PT Desktop helps you stay on track and perform at your highest level." }}
+          </p>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {{ range .categories }}
+            <div
+              class="text-center p-6 rounded-xl bg-[#6C63FF]/5 dark:bg-[#6C63FF]/10 border border-[#6C63FF]/20 shadow-sm hover:shadow-md transition-shadow">
+              <div
+                class="w-12 h-12 mx-auto mb-4 flex items-center justify-center text-dark dark:text-white">
+                {{ if eq .icon "students" }}
+                  <svg
+                    width="56"
+                    height="42"
+                    viewBox="0 0 56 42"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <g clip-path="url(#clip0_14098_30744)">
+                      <path
+                        d="M55.0459 24.0958V41.4654H16.1891C14.1325 41.5454 12.1316 40.7072 10.6268 39.1352C9.12194 37.5631 8.23635 35.3859 8.16485 33.0826C8.09334 30.7792 8.84177 28.5384 10.2455 26.8531C11.6492 25.1677 13.5932 24.1759 15.6499 24.0958C15.8297 24.0888 16.0095 24.0888 16.1894 24.0958H55.0459Z"
+                        fill="#F2F2F2" />
+                      <path
+                        d="M55.9997 41.3315C55.9997 41.5088 55.9369 41.6788 55.8249 41.8042C55.713 41.9295 55.5612 42 55.4029 42H15.4965C13.3291 42 11.2504 41.0357 9.71784 39.3193C8.18523 37.6028 7.32422 35.2748 7.32422 32.8475C7.32422 30.4201 8.18523 28.0921 9.71784 26.3757C11.2504 24.6592 13.3291 23.695 15.4965 23.695H55.4036C55.4836 23.6919 55.5634 23.7069 55.6381 23.7391C55.7129 23.7713 55.7811 23.8201 55.8387 23.8824C55.8962 23.9447 55.942 24.0194 55.9733 24.102C56.0046 24.1846 56.0207 24.2733 56.0207 24.363C56.0207 24.4527 56.0046 24.5415 55.9733 24.6241C55.942 24.7066 55.8962 24.7813 55.8387 24.8436C55.7811 24.906 55.7129 24.9547 55.6381 24.9869C55.5634 25.0191 55.4836 25.0341 55.4036 25.0311H15.4965C13.6495 25.0379 11.8803 25.8644 10.5764 27.3295C9.27257 28.7946 8.54043 30.7788 8.54043 32.8473C8.54043 34.9159 9.27257 36.9 10.5764 38.3651C11.8803 39.8302 13.6495 40.6567 15.4965 40.6636H55.4036C55.5617 40.6638 55.7132 40.7342 55.825 40.8595C55.9368 40.9847 55.9996 41.1545 55.9997 41.3315Z"
+                        fill="#6C63FF" />
+                      <path
+                        d="M55.0482 28.1041H13.2923C13.2606 28.1044 13.2302 28.0907 13.2076 28.0659C13.185 28.041 13.1722 28.0072 13.1719 27.9718C13.1716 27.9363 13.1839 27.9022 13.206 27.8769C13.2282 27.8516 13.2584 27.8372 13.2901 27.8369H55.0482C55.0798 27.8369 55.1102 27.851 55.1325 27.876C55.1549 27.9011 55.1675 27.9351 55.1675 27.9705C55.1675 28.0059 55.1549 28.0399 55.1325 28.065C55.1102 28.09 55.0798 28.1041 55.0482 28.1041Z"
+                        fill="#CCCCCC" />
+                      <path
+                        d="M55.0482 31.3109H13.2923C13.2766 31.3111 13.2611 31.3078 13.2465 31.3012C13.232 31.2946 13.2188 31.2849 13.2076 31.2727C13.1964 31.2604 13.1875 31.2457 13.1814 31.2296C13.1753 31.2134 13.172 31.1961 13.1719 31.1785C13.1717 31.161 13.1747 31.1436 13.1805 31.1273C13.1864 31.1111 13.1951 31.0962 13.206 31.0837C13.217 31.0712 13.2301 31.0612 13.2445 31.0543C13.2589 31.0475 13.2744 31.0439 13.2901 31.0437H55.0482C55.0798 31.0437 55.1102 31.0578 55.1325 31.0828C55.1549 31.1079 55.1675 31.1419 55.1675 31.1773C55.1675 31.2127 55.1549 31.2467 55.1325 31.2718C55.1102 31.2968 55.0798 31.3109 55.0482 31.3109Z"
+                        fill="#CCCCCC" />
+                      <path
+                        d="M55.0482 34.5174H13.2923C13.2606 34.5178 13.2302 34.504 13.2076 34.4792C13.185 34.4544 13.1722 34.4205 13.1719 34.3851C13.1716 34.3497 13.1839 34.3155 13.206 34.2903C13.2282 34.265 13.2584 34.2506 13.2901 34.2502H55.0482C55.0798 34.2502 55.1102 34.2643 55.1325 34.2894C55.1549 34.3144 55.1675 34.3484 55.1675 34.3838C55.1675 34.4193 55.1549 34.4533 55.1325 34.4783C55.1102 34.5034 55.0798 34.5174 55.0482 34.5174Z"
+                        fill="#CCCCCC" />
+                      <path
+                        d="M55.0482 37.724H13.2923C13.2766 37.7242 13.2611 37.7209 13.2465 37.7143C13.232 37.7077 13.2188 37.698 13.2076 37.6857C13.1964 37.6734 13.1875 37.6588 13.1814 37.6427C13.1753 37.6265 13.172 37.6092 13.1719 37.5916C13.1717 37.5741 13.1747 37.5567 13.1805 37.5404C13.1864 37.5241 13.1951 37.5093 13.206 37.4968C13.217 37.4843 13.2301 37.4743 13.2445 37.4674C13.2589 37.4606 13.2744 37.457 13.2901 37.4568H55.0482C55.0798 37.4568 55.1102 37.4709 55.1325 37.4959C55.1549 37.521 55.1675 37.555 55.1675 37.5904C55.1675 37.6258 55.1549 37.6598 55.1325 37.6849C55.1102 37.7099 55.0798 37.724 55.0482 37.724Z"
+                        fill="#CCCCCC" />
+                      <path
+                        d="M47.7219 5.79613V23.1656H8.86508C6.80841 23.2457 4.80756 22.4075 3.30268 20.8355C1.79781 19.2634 0.912181 17.0863 0.840634 14.7829C0.769086 12.4796 1.51748 10.2388 2.92117 8.55338C4.32486 6.86802 6.26887 5.87617 8.32554 5.79604C8.50531 5.78901 8.68516 5.78901 8.86508 5.79604L47.7219 5.79613Z"
+                        fill="#F2F2F2" />
+                      <path
+                        d="M48.6755 23.0319C48.6755 23.2092 48.6126 23.3792 48.5007 23.5046C48.3888 23.63 48.237 23.7004 48.0787 23.7004H8.17232C6.00489 23.7004 3.92623 22.7361 2.39362 21.0197C0.861011 19.3033 0 16.9753 0 14.5479C0 12.1205 0.861011 9.79253 2.39362 8.07611C3.92623 6.35968 6.00489 5.39541 8.17232 5.39541H48.0791C48.1592 5.39236 48.2389 5.40739 48.3137 5.43959C48.3884 5.47179 48.4566 5.52051 48.5142 5.58284C48.5718 5.64518 48.6176 5.71985 48.6489 5.80242C48.6801 5.88499 48.6963 5.97377 48.6963 6.06346C48.6963 6.15315 48.6801 6.24193 48.6489 6.3245C48.6176 6.40707 48.5718 6.48175 48.5142 6.54408C48.4566 6.60642 48.3884 6.65513 48.3137 6.68734C48.2389 6.71954 48.1592 6.73456 48.0791 6.73151H8.17232C6.32533 6.73836 4.55608 7.56488 3.25221 9.02997C1.94835 10.4951 1.21621 12.4792 1.21621 14.5478C1.21621 16.6163 1.94835 18.6005 3.25221 20.0656C4.55608 21.5307 6.32533 22.3572 8.17232 22.364H48.0791C48.2374 22.364 48.3892 22.4344 48.5012 22.5598C48.6131 22.6852 48.676 22.8552 48.676 23.0325L48.6755 23.0319Z"
+                        fill="#6C63FF" />
+                      <path
+                        d="M47.724 9.80431H5.96807C5.9524 9.80448 5.93686 9.80118 5.92233 9.79462C5.9078 9.78805 5.89457 9.77835 5.88339 9.76606C5.86081 9.74124 5.84796 9.70739 5.84766 9.67195C5.84737 9.63652 5.85965 9.60241 5.88182 9.57712C5.90398 9.55183 5.93421 9.53744 5.96585 9.53711H47.724C47.7556 9.53711 47.786 9.55118 47.8083 9.57624C47.8307 9.60129 47.8433 9.63528 47.8433 9.67071C47.8433 9.70614 47.8307 9.74013 47.8083 9.76518C47.786 9.79024 47.7556 9.80431 47.724 9.80431Z"
+                        fill="#CCCCCC" />
+                      <path
+                        d="M47.724 13.0111H5.96807C5.9524 13.0113 5.93686 13.008 5.92233 13.0014C5.9078 12.9948 5.89457 12.9851 5.88339 12.9728C5.87221 12.9606 5.8633 12.9459 5.85717 12.9298C5.85104 12.9136 5.84781 12.8963 5.84766 12.8787C5.84752 12.8612 5.85046 12.8438 5.85632 12.8275C5.86218 12.8112 5.87084 12.7964 5.88182 12.7839C5.89279 12.7714 5.90586 12.7614 5.92028 12.7545C5.9347 12.7477 5.95018 12.7441 5.96585 12.7439H47.724C47.7396 12.7439 47.7551 12.7474 47.7696 12.7541C47.7841 12.7608 47.7972 12.7706 47.8083 12.783C47.8194 12.7954 47.8282 12.8102 47.8342 12.8264C47.8402 12.8426 47.8433 12.86 47.8433 12.8775C47.8433 12.895 47.8402 12.9124 47.8342 12.9286C47.8282 12.9448 47.8194 12.9596 47.8083 12.972C47.7972 12.9844 47.7841 12.9942 47.7696 13.0009C47.7551 13.0076 47.7396 13.0111 47.724 13.0111Z"
+                        fill="#CCCCCC" />
+                      <path
+                        d="M47.724 16.2176H5.96807C5.9524 16.2178 5.93686 16.2145 5.92233 16.208C5.9078 16.2014 5.89457 16.1917 5.88339 16.1794C5.86081 16.1546 5.84796 16.1207 5.84766 16.0853C5.84737 16.0498 5.85965 16.0157 5.88182 15.9904C5.90398 15.9652 5.93421 15.9508 5.96585 15.9504H47.724C47.7556 15.9504 47.786 15.9645 47.8083 15.9896C47.8307 16.0146 47.8433 16.0486 47.8433 16.084C47.8433 16.1195 47.8307 16.1535 47.8083 16.1785C47.786 16.2036 47.7556 16.2176 47.724 16.2176Z"
+                        fill="#CCCCCC" />
+                      <path
+                        d="M47.724 19.4242H5.96807C5.93643 19.4245 5.90597 19.4108 5.88339 19.3859C5.86081 19.3611 5.84796 19.3273 5.84766 19.2918C5.84737 19.2564 5.85965 19.2223 5.88182 19.197C5.90398 19.1717 5.93421 19.1573 5.96585 19.157H47.724C47.7556 19.157 47.786 19.1711 47.8083 19.1961C47.8307 19.2212 47.8433 19.2552 47.8433 19.2906C47.8433 19.326 47.8307 19.36 47.8083 19.3851C47.786 19.4101 47.7556 19.4242 47.724 19.4242Z"
+                        fill="#CCCCCC" />
+                      <path
+                        d="M40.9645 0.00149309H23.2611C23.0931 0.00134326 22.9273 0.0445369 22.7766 0.127725L18.3083 2.63292C18.1613 2.7029 18.0358 2.81979 17.9477 2.96903C17.8595 3.11827 17.8125 3.29326 17.8125 3.4722C17.8125 3.65114 17.8595 3.82613 17.9477 3.97537C18.0358 4.12461 18.1613 4.2415 18.3083 4.31148L22.7765 6.81667C22.9272 6.89985 23.093 6.94305 23.2611 6.9429H40.9645C41.2085 6.95871 41.4482 6.86625 41.6317 6.68554C41.8153 6.50483 41.9278 6.25043 41.9451 5.97744V0.967219C41.9279 0.694177 41.8153 0.43971 41.6318 0.258949C41.4483 0.0781885 41.2085 -0.0143095 40.9645 0.00149309Z"
+                        fill="#090814" />
+                      <path
+                        d="M41.9451 0.967484V5.97779C41.9278 6.25077 41.8151 6.50513 41.6316 6.68579C41.448 6.86645 41.2083 6.95885 40.9644 6.943H37.4375V0.00150194H40.9644C41.2084 -0.014345 41.4482 0.0781669 41.6318 0.258987C41.8154 0.439807 41.9279 0.694365 41.9451 0.967484Z"
+                        fill="#6C63FF" />
+                    </g>
+                    <defs>
+                      <clipPath id="clip0_14098_30744">
+                        <rect width="56" height="42" fill="white" />
+                      </clipPath>
+                    </defs>
+                  </svg>
+                {{ else if eq .icon "developers" }}
+                  <svg
+                    width="42"
+                    height="42"
+                    viewBox="0 0 42 42"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M10.5 10.5C10.5 9.57174 10.8687 8.6815 11.5251 8.02513C12.1815 7.36875 13.0717 7 14 7C14.4641 7 14.9092 6.81563 15.2374 6.48744C15.5656 6.15925 15.75 5.71413 15.75 5.25C15.75 4.78587 15.5656 4.34075 15.2374 4.01256C14.9092 3.68437 14.4641 3.5 14 3.5C12.1435 3.5 10.363 4.2375 9.05025 5.55025C7.7375 6.86301 7 8.64348 7 10.5V15.75C7 16.6783 6.63125 17.5685 5.97487 18.2249C5.3185 18.8813 4.42826 19.25 3.5 19.25C3.03587 19.25 2.59075 19.4344 2.26256 19.7626C1.93437 20.0908 1.75 20.5359 1.75 21C1.75 21.4641 1.93437 21.9092 2.26256 22.2374C2.59075 22.5656 3.03587 22.75 3.5 22.75C4.42826 22.75 5.3185 23.1187 5.97487 23.7751C6.63125 24.4315 7 25.3217 7 26.25V31.5C7 33.3565 7.7375 35.137 9.05025 36.4497C10.363 37.7625 12.1435 38.5 14 38.5C14.4641 38.5 14.9092 38.3156 15.2374 37.9874C15.5656 37.6592 15.75 37.2141 15.75 36.75C15.75 36.2859 15.5656 35.8408 15.2374 35.5126C14.9092 35.1844 14.4641 35 14 35C13.0717 35 12.1815 34.6313 11.5251 33.9749C10.8687 33.3185 10.5 32.4283 10.5 31.5V26.25C10.4944 25.2534 10.276 24.2695 9.85954 23.3642C9.44307 22.4588 8.83806 21.6527 8.085 21C8.83806 20.3473 9.44307 19.5412 9.85954 18.6358C10.276 17.7305 10.4944 16.7466 10.5 15.75V10.5ZM38.5 19.25C37.5717 19.25 36.6815 18.8813 36.0251 18.2249C35.3688 17.5685 35 16.6783 35 15.75V10.5C35 8.64348 34.2625 6.86301 32.9497 5.55025C31.637 4.2375 29.8565 3.5 28 3.5C27.5359 3.5 27.0908 3.68437 26.7626 4.01256C26.4344 4.34075 26.25 4.78587 26.25 5.25C26.25 5.71413 26.4344 6.15925 26.7626 6.48744C27.0908 6.81563 27.5359 7 28 7C28.9283 7 29.8185 7.36875 30.4749 8.02513C31.1313 8.6815 31.5 9.57174 31.5 10.5V15.75C31.5056 16.7466 31.724 17.7305 32.1405 18.6358C32.5569 19.5412 33.1619 20.3473 33.915 21C33.1619 21.6527 32.5569 22.4588 32.1405 23.3642C31.724 24.2695 31.5056 25.2534 31.5 26.25V31.5C31.5 32.4283 31.1313 33.3185 30.4749 33.9749C29.8185 34.6313 28.9283 35 28 35C27.5359 35 27.0908 35.1844 26.7626 35.5126C26.4344 35.8408 26.25 36.2859 26.25 36.75C26.25 37.2141 26.4344 37.6592 26.7626 37.9874C27.0908 38.3156 27.5359 38.5 28 38.5C29.8565 38.5 31.637 37.7625 32.9497 36.4497C34.2625 35.137 35 33.3565 35 31.5V26.25C35 25.3217 35.3688 24.4315 36.0251 23.7751C36.6815 23.1187 37.5717 22.75 38.5 22.75C38.9641 22.75 39.4092 22.5656 39.7374 22.2374C40.0656 21.9092 40.25 21.4641 40.25 21C40.25 20.5359 40.0656 20.0908 39.7374 19.7626C39.4092 19.4344 38.9641 19.25 38.5 19.25Z"
+                      fill="#6C63FF" />
+                  </svg>
+                {{ else if eq .icon "creators" }}
+                  <svg
+                    width="42"
+                    height="42"
+                    viewBox="0 0 42 42"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <g clip-path="url(#clip0_14098_30763)">
+                      <path
+                        d="M21 5.25C12.3025 5.25 5.25 12.3025 5.25 21C5.25 29.6975 12.3025 36.75 21 36.75C22.4525 36.75 23.625 35.5775 23.625 34.125C23.625 33.4425 23.3713 32.83 22.9425 32.3663C22.5312 31.9025 22.2862 31.2987 22.2862 30.625C22.2862 29.1725 23.4587 28 24.9112 28H28C32.83 28 36.75 24.08 36.75 19.25C36.75 11.515 29.6975 5.25 21 5.25ZM11.375 21C9.9225 21 8.75 19.8275 8.75 18.375C8.75 16.9225 9.9225 15.75 11.375 15.75C12.8275 15.75 14 16.9225 14 18.375C14 19.8275 12.8275 21 11.375 21ZM16.625 14C15.1725 14 14 12.8275 14 11.375C14 9.9225 15.1725 8.75 16.625 8.75C18.0775 8.75 19.25 9.9225 19.25 11.375C19.25 12.8275 18.0775 14 16.625 14ZM25.375 14C23.9225 14 22.75 12.8275 22.75 11.375C22.75 9.9225 23.9225 8.75 25.375 8.75C26.8275 8.75 28 9.9225 28 11.375C28 12.8275 26.8275 14 25.375 14ZM30.625 21C29.1725 21 28 19.8275 28 18.375C28 16.9225 29.1725 15.75 30.625 15.75C32.0775 15.75 33.25 16.9225 33.25 18.375C33.25 19.8275 32.0775 21 30.625 21Z"
+                        fill="#6C63FF" />
+                    </g>
+                    <defs>
+                      <clipPath id="clip0_14098_30763">
+                        <rect width="42" height="42" fill="white" />
+                      </clipPath>
+                    </defs>
+                  </svg>
+                {{ else if eq .icon "teams" }}
+                  <svg
+                    width="72"
+                    height="42"
+                    viewBox="0 0 72 42"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M21 42C32.598 42 42 32.598 42 21C42 9.40202 32.598 0 21 0C9.40202 0 0 9.40202 0 21C0 32.598 9.40202 42 21 42Z"
+                      fill="#F2F2F2" />
+                    <path
+                      d="M21.1905 21.8754C25.8154 21.8754 29.5647 18.1262 29.5647 13.5013C29.5647 8.87642 25.8154 5.1272 21.1905 5.1272C16.5656 5.1272 12.8164 8.87642 12.8164 13.5013C12.8164 18.1262 16.5656 21.8754 21.1905 21.8754Z"
+                      fill="#2F2E41" />
+                    <path
+                      d="M21.1919 22.9756C25.3235 22.9756 28.6729 19.6263 28.6729 15.4946C28.6729 11.363 25.3235 8.01367 21.1919 8.01367C17.0603 8.01367 13.7109 11.363 13.7109 15.4946C13.7109 19.6263 17.0603 22.9756 21.1919 22.9756Z"
+                      fill="#FFB8B8" />
+                    <path
+                      d="M36.6968 34.7987C33.0586 38.9384 27.9384 41.4813 22.4415 41.8786C16.9447 42.2759 11.512 40.4956 7.31641 36.922L9.11762 31.896C9.52467 31.0033 10.167 30.2383 10.9758 29.6829C11.7846 29.1275 12.7293 28.8027 13.7086 28.7434L14.8545 28.6731L17.5869 26.3165C17.5869 26.3165 24.9491 26.0536 24.8399 25.9277L29.2994 28.6101L29.2957 28.5916L31.0488 28.699C32.0282 28.758 32.973 29.0827 33.7818 29.6381C34.5906 30.1935 35.2329 30.9587 35.6397 31.8516L36.6968 34.7987Z"
+                      fill="#6C63FF" />
+                    <path
+                      d="M29.0826 12.871C29.1351 12.3125 29.1591 11.7517 29.1546 11.1907C29.1852 10.0812 28.9819 8.97775 28.558 7.95201C28.0367 6.81628 27.1071 5.91827 25.9541 5.43642C24.8112 4.97545 23.534 4.97656 22.3919 5.43953C21.3608 4.78807 20.2151 4.27163 19.0086 4.20765C17.802 4.14369 16.5264 4.59131 15.7829 5.57663C15.6168 5.83673 15.4282 6.08172 15.2193 6.30878C14.6216 6.86226 13.7133 6.78243 12.9189 6.66926C13.2752 6.97464 13.6316 7.28002 13.9881 7.5854C13.5568 7.69808 13.1255 7.81076 12.6941 7.92343C13.1974 8.2287 13.7008 8.53398 14.204 8.83927C12.7428 9.71632 12.0787 11.6306 12.2541 13.3692C12.4201 15.0152 13.2148 16.5204 14.1647 17.8582C14.5437 17.0585 14.462 16.1016 14.4558 15.2009C14.4523 14.9088 14.4701 14.6167 14.5091 14.3272C17.7196 15.0968 21.0741 15.5907 24.476 14.3684L25.1587 12.6976C25.2545 12.7074 25.3504 12.7167 25.4461 12.7268L25.8417 14.37C26.7384 14.7365 27.637 15.0568 28.5359 14.7202C28.5797 14.974 28.606 15.233 28.6262 15.482C28.7034 15.1842 28.7703 14.8842 28.8307 14.583C28.9495 14.5193 29.0633 14.4466 29.171 14.3656C29.1927 13.8657 29.1631 13.3649 29.0826 12.871Z"
+                      fill="#2F2E41" />
+                    <path
+                      d="M71.9998 21.0215C71.9924 25.1718 70.7536 29.2267 68.44 32.6734C66.1264 36.1202 62.8419 38.804 59.0018 40.3854C55.1618 41.9669 50.9387 42.3749 46.8665 41.558C42.7944 40.7411 39.0561 38.736 36.1244 35.7961C33.1928 32.8562 31.1993 29.1136 30.3963 25.0416C29.5932 20.9696 30.0166 16.7511 31.6128 12.9196C33.209 9.08802 35.9065 5.8155 39.364 3.51584C42.8215 1.21618 46.8838 -0.0073252 51.0371 3.2995e-05C53.7969 -0.00223392 56.5299 0.540498 59.0791 1.59704C61.6283 2.65358 63.9434 4.2031 65.8914 6.15655C67.8394 8.11001 69.3819 10.4289 70.4301 12.9799C71.4784 15.5309 72.0119 18.2638 71.9998 21.0215Z"
+                      fill="#F2F2F2" />
+                    <path
+                      d="M41.2641 14.1581C42.1324 11.3928 44.107 8.8566 46.8379 7.92178C49.5689 6.98696 53.5678 8.411 55.6209 10.4557C59.3765 14.1957 60.293 27.0442 57.7128 31.1045C57.1996 31.0774 55.4287 31.0573 54.9092 31.0378L54.1744 28.5906V31.0137C53.3469 30.9882 52.5129 30.9705 51.6724 30.9608C48.8544 30.9259 46.1598 29.8006 44.1549 27.8215C42.15 25.8424 40.9911 23.1637 40.9218 20.3484C40.8546 17.6552 40.9219 15.2479 41.2641 14.1581Z"
+                      fill="#2F2E41" />
+                    <path
+                      d="M50.688 23.3228C53.9933 23.3228 56.6728 20.6453 56.6728 17.3424C56.6728 14.0396 53.9933 11.3621 50.688 11.3621C47.3826 11.3621 44.7031 14.0396 44.7031 17.3424C44.7031 20.6453 47.3826 23.3228 50.688 23.3228Z"
+                      fill="#9E616A" />
+                    <path
+                      d="M45.5234 12.0902L52.4144 8.64233C53.8232 9.2767 55.0365 10.2761 55.9285 11.537C56.8205 12.7978 57.3587 14.2742 57.4873 15.8129L57.659 17.8688L54.7734 17.1348L54.4573 14.506L53.9673 16.9297L52.6356 16.5912L52.6482 12.51L51.3157 16.5882L46.5595 15.4963L45.5234 12.0902Z"
+                      fill="#2F2E41" />
+                    <path
+                      d="M66.5834 34.8706C62.9452 39.0072 57.825 41.5483 52.3282 41.9453C46.8313 42.3422 41.3987 40.5633 37.2031 36.9924L39.0043 31.9701C39.4114 31.0781 40.0537 30.3136 40.8625 29.7587C41.6713 29.2037 42.616 28.8792 43.5953 28.8199L44.7412 28.7496L47.4735 26.3948C47.4735 26.3948 54.8357 26.1321 54.7265 26.0063L59.186 28.6867L59.1823 28.6682L60.9354 28.7755C61.9148 28.8345 62.8596 29.159 63.6684 29.714C64.4772 30.269 65.1195 31.0336 65.5263 31.9257L66.5834 34.8706Z"
+                      fill="#6C63FF" />
+                  </svg>
+                {{ end }}
+              </div>
+              <h3
+                class="text-base font-semibold text-dark dark:text-white mb-2">
+                {{ .title }}
+              </h3>
+              <p
+                class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+                {{ .description }}
+              </p>
+            </div>
+          {{ end }}
+        </div>
+      </div>
+    </section>
+  {{ end }}
+  <!-- /Built for All Section -->
+
   <!-- How It Works Section -->
-  <section class="section bg-white dark:bg-darkmode-body">
+  <section class="section bg-white dark:bg-darkmode-body pt-0">
     <div class="container">
-      <h2 class="text-3xl md:text-4xl font-bold text-center text-dark dark:text-white mb-12">
+      <h2
+        class="text-3xl md:text-4xl font-bold text-center text-dark dark:text-white mb-12">
         {{ .Params.howItWorks.title | default "How It Works" }}
       </h2>
       <div class="row items-center">
@@ -79,11 +240,17 @@
           {{ range $index, $step := .Params.howItWorks.steps }}
             <div class="mb-6 {{ if not $step.active }}opacity-50{{ end }}">
               <div class="flex items-start gap-4">
-                <span class="text-3xl font-bold {{ if $step.active }}text-dark dark:text-white{{ else }}text-gray-400 dark:text-gray-400{{ end }}">
+                <span
+                  class="text-3xl font-bold {{ if $step.active }}
+                    text-dark dark:text-white
+                  {{ else }}
+                    text-gray-400 dark:text-gray-400
+                  {{ end }}">
                   {{ $step.number }}
                 </span>
                 <div>
-                  <h3 class="text-xl font-semibold text-dark dark:text-white mb-2">
+                  <h3
+                    class="text-xl font-semibold text-dark dark:text-white mb-2">
                     {{ $step.title }}
                   </h3>
                   <p class="text-gray-600 dark:text-gray-300">
@@ -93,8 +260,13 @@
               </div>
               {{ if lt (add $index 1) (len $.Params.howItWorks.steps) }}
                 <div class="ml-4 mt-3">
-                  <svg width="4" height="40" viewBox="0 0 4 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect width="4" height="40" rx="2" fill="#D9D9D9"/>
+                  <svg
+                    width="4"
+                    height="40"
+                    viewBox="0 0 4 40"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <rect width="4" height="40" rx="2" fill="#D9D9D9" />
                   </svg>
                 </div>
               {{ end }}
@@ -133,146 +305,158 @@
           {{ end }}
         </div>
         <div class="lg:col-7">
-          <div class="bg-[#333333] rounded-xl overflow-hidden p-16 flex justify-center h-[410px] items-center">
+          <div
+            class="bg-[#333333] rounded-xl overflow-hidden p-16 flex justify-center h-[410px] items-center">
             <img
               src="{{ .Params.howItWorks.image | default "/images/pt-desktop-how-it-works.png" }}"
               alt="How It Works"
-              class="w-[372px] h-[292px] rounded-lg"
-              loading="lazy"
-            />
+              class="w-[372px] h-[292px] rounded-lg object-cover"
+              loading="lazy" />
           </div>
         </div>
+      </div>
+      <!-- Features Section Header -->
+      <div class="text-center mt-12">
+        <span
+          class="inline-block px-6 py-2 bg-[#F2E1FF] dark:bg-[#4A2E5C] text-[#222222] dark:text-[#F2E1FF] text-sm font-medium rounded-full">
+          Features
+        </span>
       </div>
     </div>
   </section>
   <!-- /How It Works Section -->
 
-  <!-- PT Desktop Section -->
-  <section class="section bg-[#0a0a0a] dark:bg-white">
-    <div class="container">
-      <div class="row items-center justify-between">
-        <div class="lg:col-7 mb-12 lg:mb-0">
-          <h2 class="mb-6 text-3xl md:text-4xl lg:text-5xl font-bold text-white dark:text-dark">
-            {{ .Params.ptDesktop.title }}
-          </h2>
-          <p class="mb-8 text-gray-300 dark:text-gray-600">
-            {{ .Params.ptDesktop.description }}
-          </p>
-          <ul class="mb-8">
-            {{ range .Params.ptDesktop.bulletpoints }}
-              <li class="flex items-start gap-4 mb-5 text-white dark:text-dark text-lg">
-                <svg
-                  class="flex-shrink-0 mt-1"
-                  width="28"
-                  height="28"
-                  viewBox="0 0 28 28"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg">
-                  <g clip-path="url(#clip0_14573_13256)">
-                    <path
-                      d="M8.75065 14.0002L12.2507 17.5002L19.2507 10.5002M25.6673 14.0002C25.6673 20.4435 20.444 25.6668 14.0007 25.6668C7.55733 25.6668 2.33398 20.4435 2.33398 14.0002C2.33398 7.55684 7.55733 2.3335 14.0007 2.3335C20.444 2.3335 25.6673 7.55684 25.6673 14.0002Z"
-                      stroke="#E5E5E5"
-                      stroke-width="2.33333"
-                      stroke-linecap="round"
-                      stroke-linejoin="round" />
-                  </g>
-                  <defs>
-                    <clipPath id="clip0_14573_13256">
-                      <rect width="28" height="28" rx="14" fill="white" />
-                    </clipPath>
-                  </defs>
-                </svg>
-                <span>{{ . }}</span>
-              </li>
-            {{ end }}
-          </ul>
-          {{ with .Params.ptDesktop.button }}
-            <a
-              id="pt-desktop-download-btn"
-              class="inline-flex items-center px-5 py-2.5 text-sm font-medium bg-white text-[#667085] dark:bg-dark dark:text-white border border-white/30 dark:border-dark/30 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-              href="#">
-              {{ .label }}
-              <svg
-                class="ml-2"
-                width="22"
-                height="22"
-                viewBox="0 0 22 22"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg">
-                <g clip-path="url(#clip0_14573_13285)">
-                  <path
-                    d="M9.82897 5.9966L16.1056 8.036M16.1056 8.036L14.0662 14.3127M16.1056 8.036L5.41354 13.4839"
-                    stroke="#667085"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round" />
-                </g>
-                <defs>
-                  <clipPath id="clip0_14573_13285">
-                    <rect
-                      width="16"
-                      height="16"
-                      fill="white"
-                      transform="translate(0 7.26385) rotate(-27)" />
-                  </clipPath>
-                </defs>
-              </svg>
-            </a>
-          {{ end }}
-        </div>
-      </div>
-
-      <!-- Tabs -->
-      <div class="flex justify-center mt-10">
-        <div class="flex">
-          {{ range .Params.ptDesktop.tabs }}
-            <button
-              class="w-[305px] py-3 text-base font-medium {{ if .active }}
-                bg-white dark:bg-dark text-dark dark:text-white
-                rounded-md
+  <!-- Feature Sections -->
+  <div id="features">
+    {{ range $index, $feature := .Params.features }}
+      {{ $isEven := eq (mod $index 2) 0 }}
+      {{ $isFirst := eq $index 0 }}
+      {{ $isSecond := eq $index 1 }}
+      {{ $isThird := eq $index 2 }}
+      <section class="section py-16 md:py-24 bg-white dark:bg-darkmode-body">
+        <div class="container">
+          <div class="rounded-[24px] p-10 md:p-14 lg:p-20 {{ if $isFirst }}
+            bg-[#FFF4E6] dark:bg-[#2D1F0A]
+          {{ else if $isSecond }}
+            bg-[#EEECFF] dark:bg-[#1E1B3A]
+          {{ else if $isThird }}
+            bg-[#E6F9E6] dark:bg-[#0A2D0A]
+          {{ else }}
+            bg-gray-100 dark:bg-gray-800
+          {{ end }}">
+          <div class="row items-center gap-y-10">
+            <!-- Content Column -->
+            <div
+              class="lg:col-5 {{ if $isSecond }}
+                lg:order-2 lg:pl-12
               {{ else }}
-                text-gray-400 dark:text-gray-500
+                lg:order-1 lg:pr-12
               {{ end }}">
-              {{ .name }}
-            </button>
-          {{ end }}
-        </div>
-      </div>
 
-      <!-- Edge Intelligence Section -->
-      <div class="mt-16">
-        <h3 class="text-2xl md:text-3xl lg:text-4xl font-bold text-white dark:text-dark mb-4">
-          {{ .Params.edgeIntelligence.title }}
-        </h3>
-        <p class="text-gray-400 dark:text-gray-600 mb-10 max-w-xl">
-          {{ .Params.edgeIntelligence.description }}
-        </p>
-        <div class="grid md:grid-cols-3 gap-6">
-          {{ range .Params.edgeIntelligence.features }}
-            <div class="bg-[#1a1a1a] dark:bg-gray-100 rounded-xl p-5 overflow-hidden">
-              <h4 class="text-white dark:text-dark font-semibold mb-2">
-                {{ .title }}
-              </h4>
-              <p class="text-gray-400 dark:text-gray-600 text-sm mb-4">
-                {{ .content }}
+              <h2
+                class="text-2xl md:text-3xl lg:text-4xl font-bold text-dark dark:text-white mb-6 leading-tight">
+                {{ $feature.title }}
+              </h2>
+              <p
+                class="mb-8 text-gray-600 dark:text-gray-300 text-base leading-relaxed">
+                {{ $feature.description }}
               </p>
-              <div class="bg-[#2a2a2a] dark:bg-gray-200 rounded-lg overflow-hidden">
-                <img src="{{ .image }}" alt="{{ .title }}" class="w-full h-auto" loading="lazy" />
+              {{ if $feature.bulletpoints }}
+                <ul class="mb-10 space-y-4">
+                  {{ range $feature.bulletpoints }}
+                    <li
+                      class="flex items-start gap-3 text-gray-700 dark:text-gray-300 text-sm">
+                      <svg
+                        class="flex-shrink-0 mt-0.5 text-[#6C63FF]"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M7.5 12L10.5 15L16.5 9M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round" />
+                      </svg>
+                      <span>{{ . }}</span>
+                    </li>
+                  {{ end }}
+                </ul>
+              {{ end }}
+              <div class="flex flex-wrap gap-4 items-center">
+                {{ with $feature.button }}
+                  <a
+                    href="{{ .url }}"
+                    class="text-[#6C63FF] hover:text-[#5548CC] hover:underline text-sm font-medium">
+                    {{ .label }}
+                  </a>
+                {{ end }}
+                {{ with $feature.downloadButton }}
+                  <a
+                    href="#"
+                    class="download-btn inline-flex items-center px-5 py-2.5 text-sm font-medium bg-dark text-white hover:bg-black dark:bg-white dark:text-dark dark:hover:bg-gray-100 rounded-lg transition-colors shadow-sm">
+                    {{ .label }}
+                    <svg
+                      class="ml-2"
+                      width="18"
+                      height="18"
+                      viewBox="0 0 22 22"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <g clip-path="url(#clip0_feat_{{ $index }})">
+                        <path
+                          d="M9.82897 5.9966L16.1056 8.036M16.1056 8.036L14.0662 14.3127M16.1056 8.036L5.41354 13.4839"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round" />
+                      </g>
+                      <defs>
+                        <clipPath id="clip0_feat_{{ $index }}">
+                          <rect
+                            width="16"
+                            height="16"
+                            fill="white"
+                            transform="translate(0 7.26385) rotate(-27)" />
+                        </clipPath>
+                      </defs>
+                    </svg>
+                  </a>
+                {{ end }}
               </div>
             </div>
-          {{ end }}
+            <!-- Image Column -->
+            <div
+              class="lg:col-7 {{ if $isSecond }}
+                lg:order-1
+              {{ else }}
+                lg:order-2
+              {{ end }}">
+              <div class="rounded-2xl overflow-hidden">
+                <img
+                  src="{{ $feature.image }}"
+                  alt="{{ $feature.title }}"
+                  class="w-full h-auto rounded-lg"
+                  loading="lazy" />
+              </div>
+            </div>
+          </div>
+          </div>
         </div>
-      </div>
-    </div>
-  </section>
-  <!-- /PT Desktop Section -->
+      </section>
+    {{ end }}
+  </div>
+  <!-- /Feature Sections -->
 
   <!-- FAQ Section -->
   <section class="section bg-white dark:bg-darkmode-body">
     <div class="container">
       <div class="row justify-center">
         <div class="lg:col-8">
-          <h2 class="text-3xl md:text-4xl font-bold text-center text-dark dark:text-white mb-12">
+          <h2
+            class="text-3xl md:text-4xl font-bold text-center text-dark dark:text-white mb-12">
             Frequently Asked Questions
           </h2>
           {{ range .Params.faqs }}
@@ -281,13 +465,25 @@
                 <h4 class="text-lg font-medium text-dark dark:text-white">
                   {{ .q }}
                 </h4>
-                <button class="faq-toggle text-gray-400 hover:text-gray-600 dark:hover:text-gray-300">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 8V16M8 12H16M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <button
+                  class="faq-toggle text-gray-400 hover:text-gray-600 dark:hover:text-gray-300">
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M12 8V16M8 12H16M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round" />
                   </svg>
                 </button>
               </div>
-              <p class="mt-3 text-gray-600 dark:text-gray-300 hidden faq-answer">
+              <p
+                class="mt-3 text-gray-600 dark:text-gray-300 hidden faq-answer">
                 {{ .a }}
               </p>
             </div>
@@ -298,24 +494,51 @@
   </section>
   <!-- /FAQ Section -->
 
+  <!-- Bottom CTA Section -->
+  {{ with .Params.bottomCta }}
+    <section class="py-16 md:py-20 bg-[#0a0a0a] dark:bg-gray-100">
+      <div class="container">
+        <div class="max-w-lg">
+          <h2
+            class="text-2xl md:text-3xl font-bold text-white dark:text-dark mb-2 leading-tight">
+            {{ .title | default "No long-term contracts. No catches." }}
+          </h2>
+          <p class="text-gray-400 dark:text-gray-600 mb-6 text-sm">
+            {{ .description | default "Start learning today!" }}
+          </p>
+          {{ with .button }}
+            <a
+              href="#"
+              id="cta-download-btn"
+              class="inline-flex items-center px-5 py-2.5 text-sm font-medium bg-white text-dark hover:bg-gray-100 dark:bg-gray-800 dark:text-white dark:hover:bg-gray-700 rounded-lg transition-colors shadow-sm">
+              {{ .label | default "Get Started" }}
+            </a>
+          {{ end }}
+        </div>
+      </div>
+    </section>
+  {{ end }}
+  <!-- /Bottom CTA Section -->
+
   <script>
-    (function() {
+    (function () {
       // Detect platform
       function detectPlatform() {
-        const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+        const userAgent =
+          navigator.userAgent || navigator.vendor || window.opera;
 
         // Check for iOS (iPhone, iPad, iPod)
         if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-          return 'ios';
+          return "ios";
         }
 
         // Check for macOS
-        if (navigator.platform.toUpperCase().indexOf('MAC') >= 0) {
-          return 'ios';
+        if (navigator.platform.toUpperCase().indexOf("MAC") >= 0) {
+          return "ios";
         }
 
         // Default to Windows for all other platforms (Windows, Linux, etc.)
-        return 'windows';
+        return "windows";
       }
 
       // Get download URL with detected platform
@@ -325,20 +548,26 @@
       }
 
       // Set up download buttons when DOM is ready
-      document.addEventListener('DOMContentLoaded', function() {
+      document.addEventListener("DOMContentLoaded", function () {
         const downloadUrl = getDownloadUrl();
 
         // Hero download button
-        const heroDownloadBtn = document.getElementById('hero-download-btn');
+        const heroDownloadBtn = document.getElementById("hero-download-btn");
         if (heroDownloadBtn) {
           heroDownloadBtn.href = downloadUrl;
         }
 
-        // PT Desktop section download button
-        const ptDesktopDownloadBtn = document.getElementById('pt-desktop-download-btn');
-        if (ptDesktopDownloadBtn) {
-          ptDesktopDownloadBtn.href = downloadUrl;
+        // CTA download button
+        const ctaDownloadBtn = document.getElementById("cta-download-btn");
+        if (ctaDownloadBtn) {
+          ctaDownloadBtn.href = downloadUrl;
         }
+
+        // All download buttons with class
+        const downloadBtns = document.querySelectorAll(".download-btn");
+        downloadBtns.forEach(function (btn) {
+          btn.href = downloadUrl;
+        });
       });
     })();
   </script>

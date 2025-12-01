@@ -3,7 +3,7 @@ title: "PT Desktop - Clarity. Speed. Intelligence."
 meta_title: "PT Desktop - Smart AI-Powered Productivity Companion"
 description: "Your all-in-one platform for learning new skills, tracking goals, and growing with a supportive community."
 date: "2024-11-17T05:00:00Z"
-image: "/images/pt-desktop-hero.png"
+image: "/images/pt-desktop-hero2.png"
 categories: ["AI Learning", "Productivity"]
 tags: ["ai", "learning", "tracking", "productivity", "desktop"]
 draft: false
@@ -20,6 +20,24 @@ hero:
     - label: "Download Now"
       url: "#download"
       variant: "primary"
+
+# Built for All section
+builtForAll:
+  title: "Built for All."
+  description: "Whether you're exploring, building, coding, designing, or growing your business, PT Desktop helps you stay on track and perform at your highest level."
+  categories:
+    - icon: "students"
+      title: "Students"
+      description: "Students use PT Desktop to build consistent study habits, schedule assignments to skill acquisition, or get instant AI support with revision notes while studying."
+    - icon: "developers"
+      title: "Developers"
+      description: "Developers use PT Desktop to monitor coding time, debug or write code through the AI writing tool, and connect programming concepts with the learning assistant."
+    - icon: "creators"
+      title: "Creators"
+      description: "Creators use PT Desktop to track their creative workflow, generate content templates with the AI, and seamlessly expand their workspaces."
+    - icon: "teams"
+      title: "Teams"
+      description: "Teams use PT Desktop to gain clarity on work patterns, collaborate faster with AI assistants, access resources easily, and maintain team knowledge."
 
 # How it works section
 howItWorks:
@@ -42,37 +60,46 @@ howItWorks:
     url: "https://pt.edgespace.africa/signup"
   image: "/images/pt-desktop-how-it-works.png"
 
-# PT Desktop features section
-ptDesktop:
-  title: "PT Desktop - Clarity. Speed. Intelligence."
-  description: "Smart, AI-powered productivity companion designed to help you work better, learn faster, and stay in control of your goals. Whether you're building a skill, completing a project, or managing daily work, PT Desktop brings together intelligent tracking and instant AI assistance — all inside one seamless desktop experience."
-  bulletpoints:
-    - "Real-time activity & time tracking"
-    - "Helps you get more done without context switching"
-    - "Designed for deep work, fast output, and measurable progress"
-  button:
-    label: "Download App Now"
-    url: "#download"
-  tabs:
-    - name: "Progress Tracker"
-      active: false
-    - name: "Edge Intelligence"
-      active: true
+# Features section (replaces ptDesktop and edgeIntelligence)
+features:
+  - title: "Track Your Progress With Precision"
+    description: "PT Desktop monitors your activity in real time so you always know exactly how much time you're putting in to your work, and learn ways to improve your performance."
+    bulletpoints:
+      - "Real-time activity & time tracking"
+      - "Helps you get more done without context switching"
+      - "Designed for deep work, fast output, and measurable progress"
+    image: "/images/template.png"
+    button:
+      label: "Try Progress Tracker"
+      url: "/products/progress-tracker"
+    downloadButton:
+      label: "Download Now"
 
-# Edge Intelligence section
-edgeIntelligence:
-  title: "Edge Intelligence"
-  description: "Edge Intelligence brings together instant AI assistance — all inside one smooth, easy-to-use desktop experience."
-  features:
-    - title: "AI Learning Assist"
-      content: "A floating AI companion that defines, explains, and guides you instantly while you work."
-      image: "/images/ai1.png"
-    - title: "Task Completion"
-      content: "Automate tasks, run commands, and modify files without switching apps."
-      image: "/images/ai2.png"
-    - title: "In-app AI Learning Assist"
-      content: "A floating AI companion that defines, explains, and guides you instantly while you work."
-      image: "/images/ai3.png"
+  - title: "AI Learning Assist"
+    description: "A floating AI companion that defines, explains, and guides you instantly while you work."
+    bulletpoints:
+      - "Real-time activity & time tracking"
+      - "Helps you get more done without context switching"
+      - "Designed for deep work, fast output, and measurable progress"
+    image: "/images/prompt.png"
+    button:
+      label: "Try Progress Tracker"
+      url: "/products/progress-tracker"
+    downloadButton:
+      label: "Download Now"
+
+  - title: "Task Completion"
+    description: "Automate tasks, run commands, and modify files without switching apps."
+    bulletpoints:
+      - "Real-time activity & time tracking"
+      - "Helps you get more done without context switching"
+      - "Designed for deep work, fast output, and measurable progress"
+    image: "/images/assistant.png"
+    button:
+      label: "Try Progress Tracker"
+      url: "/products/progress-tracker"
+    downloadButton:
+      label: "Download Now"
 
 # FAQ section
 faqs:
@@ -88,4 +115,11 @@ faqs:
     a: "We offer monthly and annual billing options. Annual plans come with a discount."
   - q: "How do I change my account email?"
     a: "Go to Settings > Account > Email to update your email address."
+
+# Bottom CTA section
+bottomCta:
+  title: "No long-term contracts. No catches."
+  description: "Start learning today!"
+  button:
+    label: "Get Started"
 ---
