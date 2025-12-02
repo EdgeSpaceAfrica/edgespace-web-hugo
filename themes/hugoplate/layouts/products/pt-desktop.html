@@ -527,14 +527,14 @@
         const userAgent =
           navigator.userAgent || navigator.vendor || window.opera;
 
-        // Check for iOS (iPhone, iPad, iPod)
-        if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-          return "ios";
+        // Check for macOS (Macintosh, Mac OS X)
+        if (/macintosh|mac os x/.test(userAgent) && !window.MSStream) {
+          return "macos";
         }
 
         // Check for macOS
         if (navigator.platform.toUpperCase().indexOf("MAC") >= 0) {
-          return "ios";
+          return "macos";
         }
 
         // Default to Windows for all other platforms (Windows, Linux, etc.)
@@ -544,7 +544,7 @@
       // Get download URL with detected platform
       function getDownloadUrl() {
         const platform = detectPlatform();
-        return `https://pt.edgespace.africa/api/general/download?platform=${platform}`;
+        return `https://pt.edgespace.africa/api/general/desktop-app/download?platform=${platform}`;
       }
 
       // Set up download buttons when DOM is ready
