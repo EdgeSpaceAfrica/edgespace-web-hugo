@@ -144,20 +144,20 @@
   <!-- PT Desktop -->
   {{ with .Params.pt_desktop }}
     {{ if .enable }}
-      <section class="section bg-[#000000] dark:bg-white">
+      <section class="section bg-white dark:bg-[#000000]">
         <div class="container">
           <div class="row items-center justify-between">
             <div class="lg:col-7 mb-12 lg:mb-0">
               <h2
-                class="mb-6 text-3xl md:text-4xl lg:text-5xl font-bold text-white dark:text-dark">
+                class="mb-6 text-3xl md:text-4xl lg:text-5xl font-bold text-black dark:text-white">
                 {{ .title | markdownify }}
               </h2>
-              <p class="mb-8 text-gray-300 dark:text-gray-600">
+              <p class="mb-8 text-gray-600 dark:text-gray-300">
                 {{ .content | markdownify }}
               </p>
               <ul class="mb-8">
                 {{ range .bulletpoints }}
-                  <li class="flex items-start gap-4 mb-5 text-white dark:text-dark text-lg">
+                  <li class="flex items-start gap-4 mb-5 text-black dark:text-white text-lg">
                     <svg
                       class="flex-shrink-0 mt-1"
                       width="28"
@@ -185,38 +185,44 @@
               </ul>
               {{ with .button }}
                 {{ if .enable }}
-                  <a
-                    class="inline-flex items-center px-5 py-2.5 text-sm font-medium bg-white dark:bg-dark dark:text-white border border-white/30 dark:border-dark/30 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-                    href="{{ .link | absURL }}"
-                    {{ if strings.HasPrefix .link `http` }}
-                      target="_blank" rel="noopener"
-                    {{ end }}>
-                    {{ .label }}
-                    <svg
-                      width="22"
-                      height="22"
-                      viewBox="0 0 22 22"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg">
-                      <g clip-path="url(#clip0_14573_13285)">
-                        <path
-                          d="M9.82897 5.9966L16.1056 8.036M16.1056 8.036L14.0662 14.3127M16.1056 8.036L5.41354 13.4839"
-                          stroke="#667085"
-                          stroke-width="2"
-                          stroke-linecap="round"
-                          stroke-linejoin="round" />
-                      </g>
-                      <defs>
-                        <clipPath id="clip0_14573_13285">
-                          <rect
-                            width="16"
-                            height="16"
-                            fill="white"
-                            transform="translate(0 7.26385) rotate(-27)" />
-                        </clipPath>
-                      </defs>
-                    </svg>
-                  </a>
+                  <div class="flex flex-wrap gap-3">
+                    <a
+                      id="pt-desktop-download-btn"
+                      class="inline-flex items-center px-5 py-2.5 text-sm font-medium bg-dark dark:bg-white text-white dark:text-dark border border-dark/30 dark:border-white/30 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors"
+                      href="#">
+                      {{ .label }}
+                      <svg
+                        width="22"
+                        height="22"
+                        viewBox="0 0 22 22"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <g clip-path="url(#clip0_14573_13285)">
+                          <path
+                            d="M9.82897 5.9966L16.1056 8.036M16.1056 8.036L14.0662 14.3127M16.1056 8.036L5.41354 13.4839"
+                            stroke="#667085"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round" />
+                        </g>
+                        <defs>
+                          <clipPath id="clip0_14573_13285">
+                            <rect
+                              width="16"
+                              height="16"
+                              fill="white"
+                              transform="translate(0 7.26385) rotate(-27)" />
+                          </clipPath>
+                        </defs>
+                      </svg>
+                    </a>
+                    <a
+                      class="inline-flex items-center px-5 py-2.5 text-sm font-medium bg-transparent text-dark dark:text-white border border-dark/30 dark:border-white/30 rounded-lg hover:bg-dark/10 dark:hover:bg-white/10 transition-colors"
+                      href="/products/pt-desktop">
+                      Read More
+                      <i class="fa fa-arrow-right pl-2"></i>
+                    </a>
+                  </div>
                 {{ end }}
               {{ end }}
             </div>
@@ -227,12 +233,13 @@
             <div class="flex">
               {{ range .tabs }}
                 <button
-                  class="w-[305px] py-3 text-base font-medium {{ if .active }}
-                    bg-white dark:bg-dark text-dark dark:text-white
+                  class="pt-tabs w-[305px] py-3 text-base font-medium {{ if .active }}
+                    bg-dark dark:bg-white text-white dark:text-dark
                     rounded-md
                   {{ else }}
-                    text-gray-400 dark:text-gray-500
-                  {{ end }}">
+                    text-gray-500 dark:text-gray-400
+                  {{ end }}"
+                  data-tab="{{ .name }}">
                   {{ .name }}
                 </button>
               {{ end }}
@@ -241,25 +248,25 @@
 
           <!-- Edge Intelligence Section -->
           {{ with .edge_intelligence }}
-            <div class="mt-16">
-              <h3 class="text-2xl md:text-3xl lg:text-4xl font-bold text-white dark:text-dark mb-4">
+            <div id="edge-intelligence" class="mt-16">
+              <h3 class="text-2xl md:text-3xl lg:text-4xl font-bold text-dark dark:text-white mb-4">
                 {{ .title }}
               </h3>
-              <p class="text-gray-400 dark:text-gray-600 mb-10 max-w-xl">
+              <p class="text-gray-600 dark:text-gray-400 mb-10 max-w-xl">
                 {{ .content | markdownify }}
               </p>
               <div class="grid md:grid-cols-3 gap-6">
                 {{ range .features }}
                   <div
-                    class="bg-[#333333] dark:bg-gray-100 rounded-xl p-5 overflow-hidden">
-                    <h4 class="text-white dark:text-dark font-semibold mb-2">
+                    class="bg-gray-100 dark:bg-[#333333] rounded-xl p-5 overflow-hidden">
+                    <h4 class="text-dark dark:text-white font-semibold mb-2">
                       {{ .title }}
                     </h4>
-                    <p class="text-gray-400 dark:text-gray-600 text-sm mb-4">
+                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">
                       {{ .content }}
                     </p>
                     <div
-                      class="bg-[#2a2a2a] dark:bg-gray-200 rounded-lg overflow-hidden">
+                      class="dark:bg-[#2a2a2a] bg-gray-200 rounded-lg overflow-hidden">
                       {{ partial "image" (dict "Src" .image "Alt" .title "Class" "w-full h-auto") }}
                     </div>
                   </div>
@@ -272,6 +279,51 @@
     {{ end }}
   {{ end }}
   <!-- /PT Desktop -->
+
+  <!-- PT Desktop Download Script -->
+  <script>
+    (function () {
+      function detectPlatform() {
+        var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+        if (/macintosh|mac os x/i.test(userAgent) && !window.MSStream) {
+          return "macos";
+        }
+        if (navigator.platform && navigator.platform.toUpperCase().indexOf("MAC") >= 0) {
+          return "macos";
+        }
+        return "windows";
+      }
+
+      function getDownloadUrl() {
+        var platform = detectPlatform();
+        return "https://pt.edgespace.africa/api/general/desktop-app/download?platform=" + platform;
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        var btn = document.getElementById("pt-desktop-download-btn");
+        if (btn) {
+          btn.href = getDownloadUrl();
+        }
+
+        // Tabs behavior: navigate or scroll
+        var tabs = document.querySelectorAll(".pt-tabs");
+        tabs.forEach(function (tab) {
+          tab.addEventListener("click", function () {
+            var name = tab.getAttribute("data-tab") || tab.textContent.trim();
+            // Visual active toggle
+            tabs.forEach(function (t) {
+              t.classList.remove("bg-dark", "text-white", "dark:bg-white", "dark:text-dark", "rounded-md");
+              t.classList.add("text-gray-500", "dark:text-gray-400");
+            });
+            tab.classList.add("bg-dark", "text-white", "dark:bg-white", "dark:text-dark", "rounded-md");
+            tab.classList.remove("text-gray-500", "dark:text-gray-400");
+
+            // No navigation or scrolling; tabs only toggle visual state.
+          });
+        });
+      });
+    })();
+  </script>
 
   <!-- Features -->
   {{ range $i, $e:= .Params.features }}
