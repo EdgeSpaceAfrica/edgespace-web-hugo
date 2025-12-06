@@ -22,6 +22,12 @@ pageRef = "/products/progress-tracker"
 weight = 1
 
 [[main]]
+parent = "Products"
+name = "PT Desktop"
+pageRef = "/products/pt-desktop"
+weight = 2
+
+[[main]]
 name = "Blog"
 # pageRef = "/blog"
 url = "https://edgespace.substack.com"
